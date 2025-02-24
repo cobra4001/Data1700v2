@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The MagiScript Library</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="library">
+<h1>Welcome to The MagiScript Library of Mexyll the Magnificent</h1>
+
+<div id="familiar-container" class="top-right-corner">
+    <p id="familiar-name-display"></p>
+</div>
+
+<div class="book-view-container">
+    <div id="book-view" class="hidden">
+        <button id="close-tome">Close Tome</button>
+
+        <div class="spell-page hidden" id="change-password-book">
+            <div class="page-left">
+                <img src="resources/spellPages/witchPassword.webp" alt="witch and padlock">
+            </div>
+            <form id="change-password-form">
+                <label for="Username">Username</label>
+                <input type="text" id="Username" name="Username">
+                <label for="Password">New Password</label>
+                <input type="password" id="Password" name="Password">
+                <label for="ConfirmNewPassword">Confirm New Password</label>
+                <input type="password" id="ConfirmNewPassword" name="ConfirmNewPassword">
+                <input type="submit" value="Change Password">
+            </form>
+        </div>
+
+        <div class="spell-page hidden" id="change-name-book">
+            <div class="page-left">
+                <img src="resources/spellPages/renameWizard.webp" alt="wizard looking in mirror">
+            </div>
+            <div class="page-right">
+                <form id="rename-wizard-form">
+                    <label>Wizard Name</label>
+                    <input type="text" id="Wizard-name">
+                    <input type="submit" value="Change Name">
+                </form>
+            </div>
+        </div>
+
+        <div class="spell-page hidden" id="summon-familiar-book">
+            <div class="page-left">
+                <img src="resources/spellPages/angryLlama.webp" alt="angry two-headed llama breathing fire">
+            </div>
+            <div class="page-right">
+                <form id="summon-form">
+                    <label for="familiar-name">Familiar Name</label>
+                    <input type="text" id="familiar-name" name="familiar-name">
+                    <input type="submit" value="Summon">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>Explore the magic within books...</p>
+<div class="books-container">
+    <div class="book" id="change-password-book-cover">
+        <h2>The Arcanum of Archmage Arlo the Apathetic</h2>
+        <img src="resources/books/arcanum.webp" alt="Cover of Arcanum of Archmage Arlo the Apathetic">
+    </div>
+    <div class="book" id="change-name-book-cover">
+        <h2>Professor Noodlewhisker the Unpronounceable's Nomen Novum</h2>
+        <img src="resources/books/nomenNovum.webp" alt="Cover of Professor Noodlewhisker the Unpronounceable's Nomen Novum">
+    </div>
+    <div class="book" id="summon-familiar-book-cover">
+        <h2>Mexyll the Magnificent’s Mystical Manuscripts of Summon Familiar</h2>
+        <img src="resources/books/manuscript.webp" alt="Cover of Mystical Manuscripts of Summon Familiar">
+    </div>
+</div>
+
+<!-- Mood range slider -->
+<div id="mood-container">
+    <label for="mood-range">Mood:</label>
+    <input type="range" id="mood-range" min="1" max="5" value="3">
+    <p>Selected mood: <span id="mood-value">3</span></p>
+</div>
+
+</body>
+</html>

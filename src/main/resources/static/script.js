@@ -29,68 +29,138 @@ $(document).ready(function () {
 
         if(pattern.test(username)){
             alert("Numbers are not permitted in the username!")
-            return false;
+
         }
         else if(username === ""){
             alert("Write in your username")
-            return false;
+
         } else if (password === ""){
             alert("Make an password");
-            return false;
+
         }
         else if (password.length < 8 ) {
             alert("The password has to be at least 8 characters long!");
-            return false;
 
         } else if (password !== confirmPassword) {
             alert("The password needs to match!");
-            return false;
 
         } else{
             alert(`Password for ${username} is changed!`);
             this.reset();
         }
-
     });
 
     // Rename form
     $("#rename-wizard-form").submit(function (event) {
         event.preventDefault();
-        let newName = $("#Wizard-name").val().trim();
+        let newName = $("#wizard-name").val().trim();
+        let title = $("#wizard-title").val().trim();
         let pattern = /[0-9]/;
         if(pattern.test(newName)){
             alert("Numbers are not permitted in the username!");
-            return false;
+
         } else if (newName === "") {
             alert("Name is required!");
 
+        } else if (title === "") {
+            alert("Title is required!");
+
+        } else if (pattern.test(title)){
+            alert("numbers are not permitted in the title!");
+
         } else{
-            $(".library h1").text(`Welcome to The MagiScript Library of ${newName}`);
-            console.log(`Wizard's name changed to: ${newName}`);
+            $(".library h1").text(`Welcome to The MagiScript Library of ${newName} ${title}`);
+            console.log(`Wizard's name changed to: ${newName} and Wizzard's title changed to ${title}`);
             this.reset();
         }
     });
 
-    // Summon familiar form
-    $("#summon-form").submit(function (event) {
-        event.preventDefault();
-        let familiarName = $("#familiar-name").val().trim();
-        let pattern = /[0-9]/;
+    $(document).ready(function () {
+        // Handle form submission
+        $("#summon-form").submit(function (event) {
+            event.preventDefault();
 
-        if(pattern.test(familiarName)){
-            alert("Numbers are not permitted in the username!")
-            return false;
-        }
-        else if (familiarName === "") {
-            alert("Familiar Name is required!");
-        } else{
-            alert(`You have summoned: ${familiarName}!`);
-            $("#familiar-name-display").text(`Familiar: ${familiarName}`);
-            console.log(`Summoned familiar: ${familiarName}`);
-            this.reset();
-        }
+            // Get values from the form
+            let familiarName = $("#familiar-name").val().trim();
+            let familiarBase = $("#familiar-base").val(); // select
+            let haswings = $("#haswings").prop("checked"); // checkbox
+            let typeofwings = $("#typeofwings").val(); // select
+            let levitating = $("#levitating").prop("checked"); // checkbox
+            let ExtraHead = $("#ExtraHead").prop("checked"); // checkbox
+            let FireBreath = $("#FireBreath").prop("checked"); // checkbox
+            let familiarmood = $("#familiarmood").val(); // select
+            let date = $("#date").val(); // date
+            let pattern = /[0-9]/; // Pattern to check if numbers are in the name
 
+            // Validation checks
+            if (pattern.test(familiarName)) {
+                alert("Numbers are not permitted in the familiar name!");
+                return; // Stop form submission
+            } else if (familiarName === "") {
+                alert("Familiar Name can't be empty!");
+                return;
+            } else if (familiarBase === "") {
+                alert("Familiar Base can't be blank!");
+                return;
+            } else if (haswings && typeofwings === "") {  // Check if wings are selected and type is specified
+                alert("Please specify the type of wings!");
+                return;
+            } else if (familiarmood === "") {
+                alert("Please select a mood for your familiar!");
+                return;
+            } else if (date === "") {
+                alert("Please set an end date for the contract!");
+                return;
+            }
+
+            // Build the familiar's description dynamically
+            let familiarDescription = `You have summoned: ${familiarName}, a ${familiarBase}`;
+
+            // Add wings description if applicable
+            if (haswings) {
+                familiarDescription += ` with ${typeofwings} wings`;
+            }
+
+            // Add additional traits
+            let traits = [];
+            if (levitating) traits.push("Levitating");
+            if (ExtraHead) traits.push("Extra Head");
+            if (FireBreath) traits.push("Fire Breath");
+
+            if (traits.length > 0) {
+                familiarDescription += `. It has the following customizations: ${traits.join(", ")}.`;
+            }
+
+            // Add mood description
+            familiarDescription += ` It appears to be ${familiarmood}.`;
+
+            // Add contract end date
+            familiarDescription += ` The contract ends on ${date}.`;
+
+            // Display the familiar's details
+            alert(familiarDescription);
+            console.log(familiarDescription);
+
+            // Display the familiar's name in the top-right corner
+            $("#familiarnamedisplay").text(`Familiar: ${familiarName}`).show();
+
+            // Reset the form after successful submission
+            $("#summon-form")[0].reset();
+        });
+
+        // Dynamically show or hide wings field based on the "Has Wings" checkbox
+        $("#haswings").change(function () {
+            if ($(this).prop("checked")) {
+                $("#wings-type").show(); // Show wings type select if "Has Wings" is checked
+            } else {
+                $("#wings-type").hide(); // Hide wings type select if "Has Wings" is unchecked
+            }
+        });
+
+        // Trigger the change event to ensure proper display on page load
+        $("#haswings").trigger("change");
     });
+
 
     // Mood range slider
     $("#mood-range").on("input", function () {

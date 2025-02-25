@@ -41,8 +41,10 @@
             </div>
             <div class="page-right">
                 <form id="rename-wizard-form">
-                    <label>Wizard Name</label>
-                    <input type="text" id="Wizard-name">
+                    <label for="Wizard-name">Wizard Name</label>
+                    <input type="text" id="wizard-name">
+                    <label for=wizard-title>Title</label>
+                    <input type="text" id="wizard-title">
                     <input type="submit" value="Change Name">
                 </form>
             </div>
@@ -56,8 +58,58 @@
                 <form id="summon-form">
                     <label for="familiar-name">Familiar Name</label>
                     <input type="text" id="familiar-name" name="familiar-name">
+                    <label for="familiar-base">Familiar Base</label>
+                    <select id="familiar-base" name="familiar-base">
+                      <option value=""></option>
+                      <option>Llama</option>
+                      <option>Cat</option>
+                      <option>Dragon</option>
+                      <option>Bicycle</option>
+                    </select>
+                    <label for="haswings">Has wings
+                        <input type="checkbox" id="haswings" name="haswings" >
+                    </label>
+                    <label for="typeofwings"></label>Type Of Wings
+                    <select id="typeofwings" name="typeofwings">
+                        <option value=""></option>
+                        <option>Dragon</option>
+                        <option>Fairy</option>
+                        <option>Bat</option>
+                        <option>Eagle</option>
+                    </select>
+                    <label for="levitating">Levitating
+
+                       <input type="checkbox" id="levitating" name="levitating">
+                    </label>
+                    <label for="ExtraHead">Extra Head
+
+                        <input type="checkbox" id="ExtraHead" name="ExtraHead">
+                    </label>
+
+                    <label for="FireBreath">Fire Breath
+
+                        <input type="checkbox" id="FireBreath" name="FireBreath">
+                    </label>
+                    <label for="familiarmood">Familiar Mood</label>
+                    <select id="familiarmood">
+                        <option value=""></option>
+                        <option>Angry</option>
+                        <option>Grumpy</option>
+                        <option>Irate</option>
+                        <option>Apathetic</option>
+                        <option>Sleepy</option>
+                        <option>Hesitant</option>
+                        <option>Inspired</option>
+                        <option>Thankful</option>
+                        <option>Confident</option>
+                        <option>Curious</option>
+                        <option>Joyful</option>
+                    </select>
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date">
                     <input type="submit" value="Summon">
                 </form>
+                <div id="familiarnamedisplay"></div>
             </div>
         </div>
     </div>

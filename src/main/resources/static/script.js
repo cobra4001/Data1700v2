@@ -46,7 +46,7 @@ $(document).ready(function () {
 
         } else{
             alert(`Password for ${username} is changed!`);
-            $("#summon-form")[0].reset();
+            $("#change-password-form")[0].reset();
         }
     });
 
@@ -71,7 +71,7 @@ $(document).ready(function () {
         } else{
             $(".library h1").text(`Welcome to The MagiScript Library of ${newName} ${title}`);
             console.log(`Wizard's name changed to: ${newName} and Wizzard's title changed to ${title}`);
-            $("#summon-form")[0].reset();
+            $("#rename-wizard-form")[0].reset();
         }
     });
 

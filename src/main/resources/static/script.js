@@ -69,6 +69,7 @@ $(document).ready(function () {
             alert("numbers are not permitted in the title!");
 
         } else{
+            alert("Name and title for the Wizzard is changed!");
             $(".library h1").text(`Welcome to The MagiScript Library of ${newName} ${title}`);
             console.log(`Wizard's name changed to: ${newName} and Wizzard's title changed to ${title}`);
             $("#rename-wizard-form")[0].reset();
